@@ -127,6 +127,12 @@ Service Account shall have following permissions ([IAM roles](https://cloud.goog
 
 ### PreCommit Workflows
 
+#### Java PreCommit Examples DataFlow- [job-precommit-java-examples-dataflow.yml](.github/workflows/job-precommit-java-examples-dataflow.yml)
+
+| Job                                  | Description                           | Pull Request Run | Direct Push/Merge Run | Scheduled Run | Requires GCP Credentials |
+|--------------------------------------|---------------------------------------|------------------|-----------------------|---------------|--------------------------|
+| Run Java PreCommit Examples DataFlow | Runs Java PreCommit Examples DataFlow | Yes              | Yes                   | Yes           | No                       |
+
 #### Go PreCommit - [job-precommit-go.yml](.github/workflows/job-precommit-go.yml)
 
 | Job                   | Description        | Pull Request Run | Direct Push/Merge Run | Scheduled Run | Requires GCP Credentials |
