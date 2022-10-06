@@ -48,7 +48,7 @@ jobs:
     name: Python Examples
     runs-on: self-hosted
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         version: ${{fromJson(needs.set-properties.outputs.properties).PythonTestProperties.ALL_SUPPORTED_VERSIONS}}
     steps:
