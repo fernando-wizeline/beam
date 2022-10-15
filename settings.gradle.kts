@@ -19,16 +19,13 @@
 
 plugins {
   id("com.gradle.enterprise") version "3.4.1" apply false
-  id("androidx.build.gradle.gcpbuildcache") version "1.0.0-beta01"
 }
-import androidx.build.gradle.gcpbuildcache.GcpBuildCache
-        import androidx.build.gradle.gcpbuildcache.GcpBuildCacheServiceFactory
-        import androidx.build.gradle.gcpbuildcache.ExportedKeyGcpCredentials
+
 
 // Plugins which require online access should not be enabled when running in offline mode.
-        if (!gradle.startParameter.isOffline) {
-          apply(plugin = "com.gradle.enterprise")
-        }
+if (!gradle.startParameter.isOffline) {
+  apply(plugin = "com.gradle.enterprise")
+}
 
 // JENKINS_HOME and BUILD_ID set automatically during Jenkins execution
 val isJenkinsBuild = arrayOf("JENKINS_HOME", "BUILD_ID").all { System.getenv(it) != null }
@@ -48,15 +45,6 @@ if (isJenkinsBuild || isGithubActionsBuild) {
 
 rootProject.name = "beam"
 
-buildCache {
-  registerBuildCacheService(GcpBuildCache::class, GcpBuildCacheServiceFactory::class)
-  remote(GcpBuildCache::class) {
-    projectId = "apache-beam-testing"
-    bucketName = "gradle-cache-tests"
-    isPush = true
-  }
-}
-
 include(":release")
 include(":release:go-licenses:go")
 include(":release:go-licenses:java")
@@ -72,7 +60,6 @@ include(":model:pipeline")
 include(":playground")
 include(":playground:backend")
 include(":playground:frontend")
-include(":playground:frontend:playground_components")
 include(":playground:backend:containers")
 include(":playground:backend:containers:java")
 include(":playground:backend:containers:go")
