@@ -16,11 +16,38 @@
  * limitations under the License.
  */
 
+import androidx.build.gradle.gcpbuildcache.GcpBuildCache
+import androidx.build.gradle.gcpbuildcache.GcpBuildCacheServiceFactory
+
+buildscript {
+  repositories {
+    mavenCentral()
+    flatDir {
+      dirs("libs")
+    }
+
+  }
+
+  dependencies {
+    classpath("androidx.build.gradle.gcpbuildcache:gcpbuildcache-1.0.0-beta01")
+    classpath("com.google.cloud:google-cloud-storage:2.9.3")
+  }
+
+}
+
+buildCache {
+  registerBuildCacheService(GcpBuildCache::class, GcpBuildCacheServiceFactory::class)
+  remote(GcpBuildCache::class) {
+    projectId = "apache-beam-testing"
+    bucketName = "gradle-cache-tests"
+    isPush = true
+    isEnabled = true
+  }
+}
 
 plugins {
   id("com.gradle.enterprise") version "3.4.1" apply false
 }
-
 
 // Plugins which require online access should not be enabled when running in offline mode.
 if (!gradle.startParameter.isOffline) {
@@ -60,6 +87,7 @@ include(":model:pipeline")
 include(":playground")
 include(":playground:backend")
 include(":playground:frontend")
+include(":playground:frontend:playground_components")
 include(":playground:backend:containers")
 include(":playground:backend:containers:java")
 include(":playground:backend:containers:go")
@@ -115,6 +143,7 @@ include(":sdks:java:bom")
 include(":sdks:java:bom:gcp")
 include(":sdks:java:build-tools")
 include(":sdks:java:container")
+include(":sdks:java:container:agent")
 include(":sdks:java:container:java8")
 include(":sdks:java:container:java11")
 include(":sdks:java:container:java17")
@@ -222,22 +251,28 @@ include(":sdks:python:container")
 include(":sdks:python:container:py37")
 include(":sdks:python:container:py38")
 include(":sdks:python:container:py39")
+include(":sdks:python:container:py310")
 include(":sdks:python:test-suites:dataflow")
 include(":sdks:python:test-suites:dataflow:py37")
 include(":sdks:python:test-suites:dataflow:py38")
 include(":sdks:python:test-suites:dataflow:py39")
+include(":sdks:python:test-suites:dataflow:py310")
 include(":sdks:python:test-suites:direct")
 include(":sdks:python:test-suites:direct:py37")
 include(":sdks:python:test-suites:direct:py38")
 include(":sdks:python:test-suites:direct:py39")
+include(":sdks:python:test-suites:direct:py310")
 include(":sdks:python:test-suites:direct:xlang")
 include(":sdks:python:test-suites:portable:py37")
 include(":sdks:python:test-suites:portable:py38")
 include(":sdks:python:test-suites:portable:py39")
+include(":sdks:python:test-suites:portable:py310")
 include(":sdks:python:test-suites:tox:pycommon")
 include(":sdks:python:test-suites:tox:py37")
 include(":sdks:python:test-suites:tox:py38")
 include(":sdks:python:test-suites:tox:py39")
+include(":sdks:python:test-suites:tox:py310")
+include(":vendor:bytebuddy-1_12_8")
 include(":vendor:grpc-1_48_1")
 include(":vendor:calcite-1_28_0")
 include(":vendor:guava-26_0-jre")
