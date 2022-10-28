@@ -35,16 +35,6 @@ buildscript {
 
 }
 
-buildCache {
-  registerBuildCacheService(GcpBuildCache::class, GcpBuildCacheServiceFactory::class)
-  remote(GcpBuildCache::class) {
-    projectId = "apache-beam-testing"
-    bucketName = "gradle-cache-tests"
-    isPush = true
-    isEnabled = true
-  }
-}
-
 plugins {
   id("com.gradle.enterprise") version "3.4.1" apply false
 }
@@ -66,6 +56,20 @@ if (isJenkinsBuild || isGithubActionsBuild) {
       termsOfServiceUrl = "https://gradle.com/terms-of-service"
       termsOfServiceAgree = "yes"
       publishAlways()
+    }
+  }
+}
+
+val isRemoteCacheEnabled = System.getenv("BEAM_REMOTE_CACHE_ENABLED") ?: "false"
+
+if(isRemoteCacheEnabled=="true" || isJenkinsBuild || isGithubActionsBuild) {
+  buildCache {
+    registerBuildCacheService(GcpBuildCache::class, GcpBuildCacheServiceFactory::class)
+    remote(GcpBuildCache::class) {
+      projectId = "apache-beam-testing"
+      bucketName = "gradle-cache-tests"
+      isPush = true
+      isEnabled = true
     }
   }
 }
