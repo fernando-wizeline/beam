@@ -42,6 +42,7 @@ jobs:
       REMOTE_URL: ${{ github.event.inputs.USER_REMOTE_URL }}
       BRANCH_NAME: snapshot_build
       GIT_REPO_URL: https://github.com/apache/beam.git
+      ACTIONS_ALLOW_UNSECURE_COMMANDS: true
     steps:
       - uses: actions/checkout@v3
       - name: Install hub
