@@ -39,17 +39,14 @@ jobs:
       REMOTE_NAME: remote_repo
       REMOTE_URL: ${{ github.event.inputs.USER_REMOTE_URL }}
       BRANCH_NAME: snapshot_build
-      HUB_VERSION: 2.14.2
-      HUB_ARTIFACTS_NAME: hub-linux-amd64-${ HUB_VERSION }
     steps:
       - uses: actions/checkout@v3
       - name: Install Hub
         run: |
-          wget https://github.com/github/hub/releases/download/v${HUB_VERSION}/${HUB_ARTIFACTS_NAME}.tgz
-          tar zvxvf ${HUB_ARTIFACTS_NAME}.tgz
-          sudo ./${HUB_ARTIFACTS_NAME}/install
+          wget https://github.com/github/hub/releases/download/v2.14.2/hub-linux-amd64-2.14.2.tgz
+          tar zvxvf hub-linux-amd64-2.14.2.tgz
+          sudo ./hub-linux-amd64-2.14.2/install
           echo "eval "$(hub alias -s)"" >> ~/.bashrc
-          rm -rf ${HUB_ARTIFACTS_NAME}*
       - name: Set git config
         run: |
           git config user.name $GITHUB_ACTOR
