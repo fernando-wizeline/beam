@@ -40,7 +40,7 @@ jobs:
       REMOTE_URL: ${{ github.event.inputs.USER_REMOTE_URL }}
       BRANCH_NAME: snapshot_build
       HUB_VERSION: 2.14.2
-      HUB_ARTIFACTS_NAME: hub-linux-amd64-${{ HUB_VERSION }}
+      HUB_ARTIFACTS_NAME: hub-linux-amd64-${ HUB_VERSION }
     steps:
       - uses: actions/checkout@v3
       - name: Install Hub
