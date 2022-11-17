@@ -48,16 +48,15 @@ jobs:
           tar zvxvf hub-linux-amd64-2.14.2.tgz
           sudo ./hub-linux-amd64-2.14.2/install
           echo "eval "$(hub alias -s)"" >> ~/.bashrc
-      - name: Set git config
-        run: |
-          git config user.name $GITHUB_ACTOR
-          git config user.email actions@"$RUNNER_NAME".local
       - name: Create Snapshot Branch
         run: |
+          cd ~
           mkdir ${LOCAL_BEAM_DIR}
           cd ${LOCAL_BEAM_DIR}
           git clone ${GIT_REPO_URL}
           cd ${BEAM_ROOT_DIR}
+          git config user.name $GITHUB_ACTOR
+          git config user.email actions@"$RUNNER_NAME".local
           git remote add ${REMOTE_NAME} ${REMOTE_URL}
           git checkout -b ${BRANCH_NAME}
           touch empty_file.txt
