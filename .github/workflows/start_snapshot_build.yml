@@ -36,28 +36,24 @@ jobs:
   start_snapshot_build:
     runs-on: [self-hosted, ubuntu-20.04]
     env:
-      GIT_REPO_URL: https://github.com/apache/beam.git
       REMOTE_NAME: remote_repo
       REMOTE_URL: ${{ github.event.inputs.USER_REMOTE_URL }}
       BRANCH_NAME: snapshot_build
-      LOCAL_BEAM_DIR: beam_snapshot_build
-      BEAM_ROOT_DIR: beam
     steps:
       - name: Install Hub
         run: |
+          cd ~
           wget https://github.com/github/hub/releases/download/v2.14.2/hub-linux-amd64-2.14.2.tgz
           tar zvxvf hub-linux-amd64-2.14.2.tgz
           sudo ./hub-linux-amd64-2.14.2/install
           echo "eval "$(hub alias -s)"" >> ~/.bashrc
-      - name: Create Snapshot Branch
+      - uses: actions/checkout@v3
+      - name: Set git config
         run: |
-          cd ~
-          mkdir ${LOCAL_BEAM_DIR}
-          cd ${LOCAL_BEAM_DIR}
-          git clone ${GIT_REPO_URL}
-          cd ${BEAM_ROOT_DIR}
           git config user.name $GITHUB_ACTOR
           git config user.email actions@"$RUNNER_NAME".local
+      - name: Create Snapshot Branch
+        run: |
           git remote add ${REMOTE_NAME} ${REMOTE_URL}
           git checkout -b ${BRANCH_NAME}
           touch empty_file.txt
