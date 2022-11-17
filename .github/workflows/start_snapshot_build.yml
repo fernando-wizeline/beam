@@ -36,6 +36,7 @@ jobs:
   start_snapshot_build:
     runs-on: [self-hosted, ubuntu-20.04]
     env:
+      GIT_REPO_URL: https://github.com/apache/beam.git
       REMOTE_NAME: remote_repo
       REMOTE_URL: ${{ github.event.inputs.USER_REMOTE_URL }}
       BRANCH_NAME: snapshot_build
