@@ -60,8 +60,9 @@ jobs:
           git commit -m "Add empty file in order to create PR"
           git push -f ${REMOTE_NAME}
       - name: Create Pull Request
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          hub release
           hub pull-request -F- <<<"[DO NOT MERGE]Start snapshot build for release process 
           
           
