@@ -36,7 +36,7 @@ buildscript {
 }
 
 plugins {
-  id("com.gradle.enterprise") version "3.4.1" apply false
+  id("com.gradle.enterprise") version "3.12.2" apply false
 }
 
 // Plugins which require online access should not be enabled when running in offline mode.
