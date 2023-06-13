@@ -66,7 +66,7 @@ jobs:
       - name: Setup environment
         uses: ./.github/actions/setup-self-hosted-action
       - name: Set Go Version
-        uses: actions/setup-go@v3
+        uses: actions/setup-go@v4
         with:
           go-version: ${{ matrix.golang }}
       - name: Run :goPortablePreCommit
