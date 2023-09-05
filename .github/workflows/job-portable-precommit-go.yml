@@ -40,7 +40,7 @@ jobs:
       properties: ${{ steps.test-properties.outputs.properties }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }} 
           persist-credentials: false
@@ -58,7 +58,7 @@ jobs:
         golang: ${{fromJson(needs.set-properties.outputs.properties).GoTestProperties.SUPPORTED_VERSIONS}}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           persist-credentials: false

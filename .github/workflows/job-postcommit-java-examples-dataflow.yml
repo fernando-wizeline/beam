@@ -36,7 +36,7 @@ jobs:
       properties: ${{ steps.test-properties.outputs.properties }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
           submodules: false
@@ -58,7 +58,7 @@ jobs:
           - java: "17" # TODO: Remove this line once issue https://github.com/apache/beam/issues/23066 is resolved
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
           submodules: false
