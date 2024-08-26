@@ -29,22 +29,22 @@ require (
 	cloud.google.com/go/pubsub v1.25.1
 	cloud.google.com/go/storage v1.26.0
 	github.com/docker/go-connections v0.4.0
-	github.com/go-sql-driver/mysql v1.6.0
+	github.com/go-sql-driver/mysql v1.7.1
 	github.com/golang/protobuf v1.5.2 // TODO(danoliveira): Fully replace this with google.golang.org/protobuf
 	github.com/google/go-cmp v0.5.9
 	github.com/google/uuid v1.3.0
-	github.com/lib/pq v1.10.7
+	github.com/lib/pq v1.10.9
 	github.com/linkedin/goavro v2.1.0+incompatible
 	github.com/nightlyone/lockfile v1.0.0
-	github.com/proullon/ramsql v0.0.0-20211120092837-c8d0a408b939
+	github.com/proullon/ramsql v0.1.4
 	github.com/spf13/cobra v1.5.0
 	github.com/testcontainers/testcontainers-go v0.14.0
 	github.com/xitongsys/parquet-go v1.6.2
 	github.com/xitongsys/parquet-go-source v0.0.0-20220315005136-aec0fe3e777c
 	golang.org/x/net v0.0.0-20220909164309-bea034e7d591
 	golang.org/x/oauth2 v0.0.0-20220909003341-f21342109be1
-	golang.org/x/sys v0.0.0-20220728004956-3c1f35247d10
-	golang.org/x/text v0.3.7
+	golang.org/x/sys v0.7.0
+	golang.org/x/text v0.9.0
 	google.golang.org/api v0.96.0
 	google.golang.org/genproto v0.0.0-20220913154956-18f8339a66a5
 	google.golang.org/grpc v1.49.0
@@ -89,6 +89,7 @@ require (
 	github.com/sirupsen/logrus v1.8.1 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	go.opencensus.io v0.23.0 // indirect
+	golang.org/x/exp v0.0.0-20230713183714-613f0c0eb8a1 // indirect
 	golang.org/x/sync v0.0.0-20220601150217-0de741cfad7f // indirect
 	golang.org/x/xerrors v0.0.0-20220609144429-65e65417b02f // indirect
 	google.golang.org/appengine v1.6.7 // indirect
