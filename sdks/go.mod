@@ -44,7 +44,7 @@ require (
 	golang.org/x/net v0.0.0-20220909164309-bea034e7d591
 	golang.org/x/oauth2 v0.0.0-20220909003341-f21342109be1
 	golang.org/x/sys v0.0.0-20220728004956-3c1f35247d10
-	golang.org/x/text v0.3.7
+	golang.org/x/text v0.21.0
 	google.golang.org/api v0.96.0
 	google.golang.org/genproto v0.0.0-20220913154956-18f8339a66a5
 	google.golang.org/grpc v1.49.0
@@ -89,7 +89,7 @@ require (
 	github.com/sirupsen/logrus v1.8.1 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	go.opencensus.io v0.23.0 // indirect
-	golang.org/x/sync v0.0.0-20220601150217-0de741cfad7f // indirect
+	golang.org/x/sync v0.10.0 // indirect
 	golang.org/x/xerrors v0.0.0-20220609144429-65e65417b02f // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	gopkg.in/linkedin/goavro.v1 v1.0.5 // indirect
